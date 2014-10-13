@@ -40,7 +40,7 @@ function node_download() {
 
   echo `ls $location`
 
-  mv -pr "$location/node-v${NODE_VERSION}-linux-x64/*" $location
+  mv -f $location/node-v${NODE_VERSION}-linux-x64/* $location
   rm -rf "$location/node-v${NODE_VERSION}-linux-x64"
 }
 
