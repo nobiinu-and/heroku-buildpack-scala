@@ -125,16 +125,12 @@ fi
 # instal and build javascripts
 BUILD_DIR_ORG=$BUILD_DIR
 BUILD_DIR="$BUILD_DIR_ORG"/ui
-LP_DIR=`cd $(dirname $0); cd ..; pwd`
-
-SCONS_VERSION="1.2.0"
-S3_BUCKET="heroku-buildpack-nodejs"
 
 . $BIN_DIR/common-node
-
 install_node_and_build_javascripts
 
 BUILD_DIR=$BUILD_DIR_ORG
+cd BUILD_DIR
 
 echo "         show settings"
 echo "         - BUILD_DIR=$BUILD_DIR"
