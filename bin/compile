@@ -123,17 +123,8 @@ if [ ! -d "$SBT_USER_HOME/.ivy2" ]; then
 fi
 
 # instal and build javascripts
-BUILD_DIR_ORG=$BUILD_DIR
-BUILD_DIR="$BUILD_DIR_ORG"/ui
-
 . $BIN_DIR/common-node
 install_node_and_build_javascripts
-
-BUILD_DIR=$BUILD_DIR_ORG
-cd $BUILD_DIR
-
-echo "         show settings"
-echo "         - BUILD_DIR=$BUILD_DIR"
 
 # build app
 run_sbt "$SBT_USER_HOME_ABSOLUTE" "$SBT_BINDIR/$SBT_JAR" "$SBT_TASKS"

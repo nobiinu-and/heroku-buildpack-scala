@@ -42,6 +42,9 @@ function cat_npm_debug_log() {
 
 function install_node_and_build_javascripts() {
 
+  BUILD_DIR_ORG=$BUILD_DIR
+  BUILD_DIR="$BUILD_DIR_ORG"/ui
+
   echo "-----> Install and Build javascripts..."
   echo "         show settings"
   echo "         - BUILD_DIR=$BUILD_DIR"
@@ -101,4 +104,8 @@ function install_node_and_build_javascripts() {
     echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
   fi
 
+  echo "-----> Install and Build javascripts...Done"
+
+  BUILD_DIR=$BUILD_DIR_ORG
+  cd $BUILD_DIR
 }
