@@ -100,8 +100,8 @@ function install_node_and_build_javascripts() {
   declare -A engine_defaults
   declare -A engine_requests
 
-  engine_defaults["node"]="0.10.x"
-  engine_defaults["npm"]="1.2.x"
+  engine_defaults["node"]="0.10.26"
+  engine_defaults["npm"]="1.4.3"
 
   engine_versions["node"]=$(manifest_versions "nodejs")
   engine_requests["node"]=$(package_engine_version "node")
@@ -110,6 +110,12 @@ function install_node_and_build_javascripts() {
   engine_requests["npm"]=$(package_engine_version "npm")
 
   echo "-----> Resolving engine versions"
+  echo "         defaults.node : ${engine_defaults["node"]}"
+  echo "         defaults.npm  : ${engine_defaults["npm"]}"
+  echo "         versions.node : ${engine_versions["node"]}"
+  echo "         versions.npm  : ${engine_versions["npm"]}"
+  echo "         requests.node : ${engine_requests["node"]}"
+  echo "         requests.npm  : ${engine_requests["npm"]}"
 
   # add a warning if no version of node specified
   if [ "${engine_requests["node"]}" == "" ]; then
