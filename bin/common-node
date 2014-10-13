@@ -83,7 +83,7 @@ function cat_npm_debug_log() {
   fi
 }
 
-function build_javascripts() {
+function install_node_and_build_javascripts() {
 
 trap cat_npm_debug_log EXIT
 bootstrap_node=$(mktmpdir bootstrap_node)
