@@ -38,7 +38,9 @@ function node_download() {
   mkdir -p $location
   curl $package -s -o - | tar xzf - -C $location
 
-  mv "$location/node-v${NODE_VERSION}-linux-x64/*" $location
+  echo `ls $location`
+
+  mv -pr "$location/node-v${NODE_VERSION}-linux-x64/*" $location
   rm -rf "$location/node-v${NODE_VERSION}-linux-x64"
 }
 
