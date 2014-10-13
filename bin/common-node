@@ -77,11 +77,13 @@ function install_node_and_build_javascripts() {
 
   # install dependencies with npm
   echo "-----> Installing dependencies with npm"
+  cd $BUILD_DIR
   npm install
   echo "Dependencies installed" | indent
 
   if [ -f $BUILD_DIR/bower.json ]; then
     # make sure that bower is installed locally
+    cd $BUILD_DIR
     npm install bower
     echo "-----> Found bower.json, running bower install"
     $BUILD_DIR/node_modules/.bin/bower install
@@ -91,8 +93,9 @@ function install_node_and_build_javascripts() {
 
   if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
     # make sure that grunt-cli and bower are installed locally
-    run_npm "install grunt-cli"
+    npm install grunt-cli
     echo "-----> Found Gruntfile, running grunt task"
+    cd $BUILD_DIR
     $BUILD_DIR/node_modules/.bin/grunt dev
   else
     echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
