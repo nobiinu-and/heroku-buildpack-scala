@@ -130,6 +130,7 @@ BUILD_DIR_ORG="$BUILD_DIR"
 BUILD_DIR="$BUILD_DIR_ORG"/ui
 . $BIN_DIR/common-node
 
+echo "-----> Install and Build javascripts..."
 install_node_and_build_javascripts
 
 BUILD_DIR="$BUILD_DIR_ORG"
