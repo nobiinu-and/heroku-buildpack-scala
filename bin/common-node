@@ -15,18 +15,6 @@ function indent() {
   esac
 }
 
-function run_npm() {
-  command="$1"
-
-  cd $BUILD_DIR
-  HOME="$BUILD_DIR" $VENDORED_NODE/bin/node $VENDORED_NPM/cli.js $command 2>&1 | indent
-
-  if [ "${PIPESTATUS[*]}" != "0 0" ]; then
-    echo " !     Failed to $command dependencies with npm"
-    exit 1
-  fi
-}
-
 function node_download() {
   version="$1"
   location="$2"
@@ -42,6 +30,8 @@ function node_download() {
 
   mv -f $location/node-v${NODE_VERSION}-linux-x64/* $location
   rm -rf "$location/node-v${NODE_VERSION}-linux-x64"
+
+  chmod +x $location/bin/*
 }
 
 function cat_npm_debug_log() {
@@ -87,12 +77,12 @@ function install_node_and_build_javascripts() {
 
   # install dependencies with npm
   echo "-----> Installing dependencies with npm"
-  run_npm "install"
+  npm install
   echo "Dependencies installed" | indent
 
   if [ -f $BUILD_DIR/bower.json ]; then
     # make sure that bower is installed locally
-    run_npm "install bower"
+    npm install bower
     echo "-----> Found bower.json, running bower install"
     $BUILD_DIR/node_modules/.bin/bower install
   else
