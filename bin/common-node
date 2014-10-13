@@ -85,8 +85,10 @@ function cat_npm_debug_log() {
 
 function install_node_and_build_javascripts() {
 
-  echo "  show settings"
-  echo "   - BUILD_DIR=$BUILD_DIR"
+  echo "-----> Install and Build javascripts..."
+  echo "         show settings"
+  echo "         - BUILD_DIR=$BUILD_DIR"
+  echo "         - LP_DIR=$LP_DIR"
 
   trap cat_npm_debug_log EXIT
   bootstrap_node=$(mktmpdir bootstrap_node)
