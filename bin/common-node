@@ -32,9 +32,12 @@ function package_download() {
   version="$2"
   location="$3"
 
-  echo "         $1 $2 -> $3"
-  mkdir -p $location
   package="http://nodejs.org/dist/v$version/$engine-v$version-linux-x64.tar.gz"
+
+  echo "         $1 $2 -> $3"
+  echo "           $location"
+
+  mkdir -p $location
   curl $package -s -o - | tar xzf - -C $location
 }
 
