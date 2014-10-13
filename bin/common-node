@@ -52,8 +52,6 @@ function install_node_and_build_javascripts() {
   echo "         - LP_DIR=$LP_DIR"
 
   trap cat_npm_debug_log EXIT
-  bootstrap_node=$(mktmpdir bootstrap_node)
-  package_download "nodejs" "0.4.7" $bootstrap_node
 
   NODE_VERSION="0.10.26"
   echo "Using Node.js version: ${NODE_VERSION}" | indent
