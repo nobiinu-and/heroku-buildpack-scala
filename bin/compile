@@ -128,6 +128,9 @@ run_sbt "$SBT_USER_HOME_ABSOLUTE" "$SBT_BINDIR/$SBT_JAR" "$SBT_TASKS"
 # instal and build javascripts
 BUILD_DIR_ORG="$BUILD_DIR"
 BUILD_DIR="$BUILD_DIR_ORG"/ui
+SCONS_VERSION="1.2.0"
+S3_BUCKET="heroku-buildpack-nodejs"
+
 . $BIN_DIR/common-node
 
 echo "-----> Install and Build javascripts..."
