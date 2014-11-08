@@ -100,12 +100,16 @@ function install_node_and_build_javascripts() {
     echo "-----> Found Gruntfile, running grunt task"
     cd $BUILD_DIR
     $BUILD_DIR/node_modules/.bin/grunt dev
+    
+    # delete modules, components
+    rm -rf $BUILD_DIR/node_modules
+    rm -rf $BUILD_DIR/apps/bower_components
   else
     echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
   fi
 
   echo "-----> Install and Build javascripts...Done"
-
+  
   BUILD_DIR=$BUILD_DIR_ORG
   cd $BUILD_DIR
 }
